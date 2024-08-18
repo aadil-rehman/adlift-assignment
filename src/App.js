@@ -70,7 +70,7 @@ function App() {
 	}
 
 	return (
-		<div className="max-w-[1000px] mx-auto flex flex-col gap-4">
+		<div className="max-w-[1000px] mx-auto flex flex-col gap-4 h-screen">
 			<h1 className="font-bold text-2xl text-center my-4">
 				Product Listing with Charts
 			</h1>
@@ -119,9 +119,11 @@ function App() {
 					}}
 				/>
 			</div>
-			<div className="grid grid-cols-[3fr_2fr]">
-				<DisplayProducts products={filteredProducts} />
-				<Charts />
+			<div className="grid grid-cols-[3fr_2fr] max-h-[700px] gap-4 mt-2">
+				<div className="overflow-y-auto p-4 scrollbar-hidden">
+					<DisplayProducts products={filteredProducts} />
+				</div>
+				<Charts className="w-full" colors={colors} capacities={capacities} />
 			</div>
 		</div>
 	);
