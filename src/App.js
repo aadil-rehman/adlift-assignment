@@ -16,7 +16,9 @@ function App() {
 
 	useEffect(function () {
 		async function getProducts() {
-			const res = await axios.get("http://localhost:5000/products");
+			const res = await axios.get(
+				"https://adlift-backend.el.r.appspot.com/products"
+			);
 			setProducts(res.data);
 		}
 
@@ -36,12 +38,14 @@ function App() {
 
 		try {
 			const parsedData = JSON.parse(data);
-			await axios.post("http://localhost:5000/product", {
+			await axios.post("https://adlift-backend.el.r.appspot.com/product", {
 				name: productName,
 				data: parsedData, // Send parsed data as an object
 			});
 
-			const newProducts = await axios.get("http://localhost:5000/products");
+			const newProducts = await axios.get(
+				"https://adlift-backend.el.r.appspot.com/products"
+			);
 			setProducts(newProducts.data);
 
 			setProductName("");
